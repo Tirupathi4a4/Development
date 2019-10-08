@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Help_Class_Sample.Models.Student>
+
+@{
+    //Layout = null;
+    ViewBag.Title = "GetUsers";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetUsers</title>
+
+</head>
+<body>
+    <div>
+        <h4>StudentRecord</h4>
+        <hr />
+        @Html.ActionLink("Create User", "CreateUser")        
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Mobile)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mobile)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit User", "EditUser", new { UserName = item.UserName }) |
+                            @Html.ActionLink("Details", "Details", new { UserName = item.UserName }) |
+                            @Html.ActionLink("Delete", "Delete", new { UserName = item.UserName })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+    </div>   
+</body>
+</html>
